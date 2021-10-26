@@ -1,0 +1,27 @@
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.container {
+    margin: auto;
+    width: 620px;
+    height: 620px;
+    border: 10px solid gray;
+
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+}
+
+.grid-point {
+    border: 1px solid lightgray;
+}
+
+.red {
+    background-color: red;
+}
