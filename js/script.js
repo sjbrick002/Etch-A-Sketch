@@ -4,6 +4,8 @@ const container = document.querySelector(".container");
 let gridPoint;
 let gridPointList;
 
+
+
 function renderGrid(scale) {
     container.setAttribute("style", `grid-template-columns: repeat(${scale}, 1fr); grid-template-rows: repeat(${scale}, 1fr);`)
 
@@ -17,24 +19,23 @@ function renderGrid(scale) {
 
     gridPointList = document.querySelectorAll(".grid-point");
     for (let i = 0; i < gridPointList.length; i++) {
+        let brightnessValue = 1;
         gridPointList[i].addEventListener("mouseenter", function() {
             let redValue = Math.floor(Math.random() * 256);
             let greenValue = Math.floor(Math.random() * 256);
             let blueValue = Math.floor(Math.random() * 256);
-            gridPointList[i].setAttribute("style", `background-color: rgb(${redValue}, ${greenValue}, ${blueValue});`);
+            gridPointList[i].setAttribute("style", `background-color: rgb(${redValue}, ${greenValue}, ${blueValue}); filter: brightness(${brightnessValue});`);
+            if (brightnessValue > 0.1) {
+            brightnessValue -= 0.1;
+            brightnessValue = Math.round(brightnessValue * 10) / 10;
+
+            } else {
+                brightnessValue = 0;
+            }
         });
     };
 }
 
-
-// when this runs the gui breaks, need to fix
-function addRandomColor(block) {
-    let redValue = Math.floor(Math.random() * 256);
-    let greenValue = Math.floor(Math.random() * 256);
-    let blueValue = Math.floor(Math.random() * 256);
-    block.setAttribute("style", "background-color: red;");
-}
-// end of problem function
 
 renderGrid(16);
 
